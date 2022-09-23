@@ -15,7 +15,7 @@ const escrever = () => {
         paragrafo.innerHTML += '|'
 
         index++
-        setTimeout(escrever, 50)
+        setTimeout(escrever, 80)
     }
 }
 
