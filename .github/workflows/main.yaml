@@ -19,6 +19,6 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: ${{ secrets.FTP_PORT }}
         local_path: './index.html'
-        remote_path: './node_apps/'
+        remote_path: './'
         sftpArgs: '-o ConnectTimeout=10'
         sftp_only: true
