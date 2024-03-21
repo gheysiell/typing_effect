@@ -16,8 +16,9 @@ jobs:
         username: ${{ secrets.ftp_user }}
         server: ${{ secrets.ftp_host }}
         ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        password: ${{ secrets.FTP_PASSWORD }}
         port: ${{ secrets.FTP_PORT }}
         local_path: './index.html'
         remote_path: './node_apps/'
         sftpArgs: '-o ConnectTimeout=10'
-        sftp_only: true        
+        sftp_only: true
