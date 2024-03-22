@@ -1,24 +1,20 @@
+name: scp files
 on: 
-    push:
-        branches:
-            - master
-name: 🚀 Deploy website on push
+  push:
+      branches:
+          - master
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4    
-    - name: 📂 Sync files
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+    - uses: actions/checkout@v4
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.7
       with:
-        username: ${{ secrets.ftp_user }}
-        server: ${{ secrets.ftp_host }}
-        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        host: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         port: ${{ secrets.FTP_PORT }}
-        local_path: './*'
-        remote_path: '../node_apps/typing_effect'
-        sftpArgs: '-o ConnectTimeout=10'
-        sftp_only: true
+        source: "./*"
+        target: "../node_apps/typing_effect"
